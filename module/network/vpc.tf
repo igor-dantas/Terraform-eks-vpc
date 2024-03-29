@@ -5,7 +5,7 @@ resource "aws_vpc" "eks_vpc" {
   enable_dns_hostnames = true
   # com a função merge eu consigo mergear as tags padrões que estão no locals.tf com as tags especificas para vpc
   tags = merge(
-    local.tags,
+    var.tags,
     {
       Name = "${var.project_name}-vpc"
     }
