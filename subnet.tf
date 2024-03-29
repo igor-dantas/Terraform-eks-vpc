@@ -4,10 +4,13 @@ resource "aws_subnet" "eks_subnet_public_1a" {
   cidr_block              = cidrsubnet(var.cidr_block, 8, 1)
   map_public_ip_on_launch = true
   availability_zone       = "${data.aws_region.current.name}a"
-  tags = {
-    Name                     = "eks_subnet_public_1a",
-    "kubernetes.io/role/elb" = 1
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name                     = "eks_subnet_public_1a"
+      "kubernetes.io/role/elb" = 1
+    }
+  )
 }
 
 resource "aws_subnet" "eks_subnet_public_2b" {
@@ -15,11 +18,13 @@ resource "aws_subnet" "eks_subnet_public_2b" {
   cidr_block              = cidrsubnet(var.cidr_block, 8, 2)
   map_public_ip_on_launch = true
   availability_zone       = "${data.aws_region.current.name}b"
-
-  tags = {
-    Name                     = "eks_subnet_public_2b",
-    "kubernetes.io/role/elb" = 1
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name                     = "eks_subnet_public_2b"
+      "kubernetes.io/role/elb" = 1
+    }
+  )
 }
 
 ## private
@@ -29,9 +34,12 @@ resource "aws_subnet" "eks_subnet_private_1a" {
   cidr_block = cidrsubnet(var.cidr_block, 8, 3)
 
   availability_zone = "${data.aws_region.current.name}a"
-  tags = {
-    Name = "eks_subnet_private_1a"
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name = "eks_subnet_private_1a"
+    }
+  )
 }
 
 resource "aws_subnet" "eks_subnet_private_2b" {
@@ -39,7 +47,10 @@ resource "aws_subnet" "eks_subnet_private_2b" {
   cidr_block = cidrsubnet(var.cidr_block, 8, 4)
 
   availability_zone = "${data.aws_region.current.name}b"
-  tags = {
-    Name = "eks_subnet_private_2b"
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name = "eks_subnet_private_2b"
+    }
+  )
 }

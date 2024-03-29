@@ -4,7 +4,10 @@ resource "aws_vpc" "eks_vpc" {
   # enable_dns_support = true é default, mas vamos deixar o mais verboso possível
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = {
-    Name = "eks-vpc"
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name = "eks-vpc"
+    }
+  )
 }
