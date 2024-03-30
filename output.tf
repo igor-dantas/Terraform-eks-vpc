@@ -17,7 +17,3 @@ output "eks_subnet_private_1b" {
 output "eks_vpc_config" {
   value = module.eks_cluster.eks_vpc_config[0]
 }
-
-output "oidc" {
-  value = module.eks_cluster.oidc
-}
