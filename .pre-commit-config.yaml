@@ -6,3 +6,10 @@ repos:
       args:
         - --args=-recursive
     - id: terraform_validate
+    - id: terraform_docs
+      args:
+      - --args=--output-file README.md
+      - --args=--output-file /module/cluster/README.md
+      - --args=--output-file /module/network/README.md
+      - --args=--output-file /module/aws-load-balancer-controller/README.md
+      - --args=--output-file /module/managed-node-group/README.md
