@@ -32,7 +32,7 @@ module "eks"{
 }
 ```
 
-### Arquivo `provider.tf` ⚙️
+### Arquivo `backend.tf` ⚙️
 
 Certifique-se de criar um arquivo de provider para configurar o backend e definir onde deseja armazenar o arquivo `tf.state`.
 
@@ -42,7 +42,7 @@ Certifique-se de criar um arquivo de provider para configurar o backend e defini
 
 terraform {
   backend "s3" {
-    bucket = "eks-tf-state-igor"
+    bucket = "nome-do-bucket"
     key    = "dev/terraform.tfstate"
     region = "us-east-1"
   }
