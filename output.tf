@@ -1,19 +1,12 @@
-output "eks_subnet_public_1a" {
-  value = module.eks_network.subnet_pub_1a
-}
-output "eks_subnet_public_1b" {
-  value = module.eks_network.subnet_pub_1b
+output "oidc" {
+  value = module.eks_cluster.oidc
 }
 
 
-output "eks_subnet_private_1a" {
-  value = module.eks_network.subnet_priv_1a
+output "endpoint" {
+  value = module.eks_cluster.cluster_endpoint
 }
 
-output "eks_subnet_private_1b" {
-  value = module.eks_network.subnet_priv_1b
-}
-
-output "eks_vpc_config" {
-  value = module.eks_cluster.eks_vpc_config[0]
+output "ca" {
+  value = module.eks_cluster.cluster_certificate_authority
 }
