@@ -7,11 +7,17 @@ resource "aws_eks_cluster" "eks_cluster" {
       var.eks_subnet_public_1a,
       var.eks_subnet_public_1b
     ]
+    endpoint_private_access = true
+    # endpoint public acess 
+    # é default true, mas iremos 
+    # deixar o mais verboso possível
+    endpoint_public_access = true
   }
 
   depends_on = [
     aws_iam_role_policy_attachment.eks_cluster_role_attachement
   ]
+
   tags = merge(
     var.tags,
     {
